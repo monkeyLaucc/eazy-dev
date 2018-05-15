@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by cc on 18/5/15
- * <T, ID extends Serializable, B extends JpaRepository<T, ID>>
  */
 public class BaseServiceImpl<T extends BaseEntity, ID extends Serializable> {
 
@@ -117,14 +117,55 @@ public class BaseServiceImpl<T extends BaseEntity, ID extends Serializable> {
     }
 
 
+    /**
+     * 根据条件获取实体
+     *
+     * @param specification
+     * @return
+     */
+    public T findByCondition(Specification<T> specification) {
+        return baseRepository.findOne(specification);
+    }
 
     /**
-     * TODO 复杂查询
-     * 1.根据条件获取实体
-     * 2.根据条件列出实体
-     * 3.根据条件列出实体且排序
-     * 4.根据条件分页获取实体
-     * 5.根据条件统计实体
+     * 根据条件列出实体
+     *
+     * @param specification
+     * @return
      */
+    public List<T> listByCondition(Specification<T> specification) {
+        return baseRepository.findAll(specification);
+    }
 
+    /**
+     * 根据条件列出实体且排序
+     *
+     * @param specification
+     * @param sort
+     * @return
+     */
+    public List<T> listByCondition(Specification<T> specification, Sort sort) {
+        return baseRepository.findAll(specification, sort);
+    }
+
+    /**
+     * 根据条件分页获取实体
+     *
+     * @param specification
+     * @param pageable
+     * @return
+     */
+    public Page<T> pageByCondition(Specification<T> specification, Pageable pageable) {
+        return baseRepository.findAll(specification, pageable);
+    }
+
+    /**
+     * 根据条件统计实体
+     *
+     * @param specification
+     * @return
+     */
+    public int countByCondition(Specification<T> specification) {
+        return (int) baseRepository.count(specification);
+    }
 }
