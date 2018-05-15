@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * 统一异常处理
  */
 @RestControllerAdvice
-public class RestExceptionHandler {
+public class ApiExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ApiReview serverError(Exception e) {
