@@ -12,8 +12,8 @@ import java.util.Date;
 /**
  * Created by cc on 18/5/14
  */
-@Data
 @MappedSuperclass
+@Data
 public abstract class BaseEntity implements Serializable {
     @Id
     @GeneratedValue

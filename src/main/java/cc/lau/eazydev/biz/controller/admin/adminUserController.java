@@ -30,7 +30,7 @@ public class adminUserController extends BaseController {
     @GetMapping("findById/{id}")
     @ApiOperation(value = "添加管理员", httpMethod = "GET")
     public ApiReview findById(@PathVariable("id") Integer id) {
-        return ApiReview.success(adminServiceImpl.find(id));
+        return ApiReview.success(adminServiceImpl.findById(id));
     }
 
 }
