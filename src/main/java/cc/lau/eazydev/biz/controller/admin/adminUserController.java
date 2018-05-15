@@ -1,9 +1,9 @@
 package cc.lau.eazydev.biz.controller.admin;
 
 import cc.lau.eazydev.biz.controller.BaseController;
-import cc.lau.eazydev.core.review.ApiReview;
 import cc.lau.eazydev.biz.entity.admin.AdminUser;
 import cc.lau.eazydev.biz.service.admin.AdminServiceImpl;
+import cc.lau.eazydev.core.review.ApiReview;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +33,9 @@ public class adminUserController extends BaseController {
         return ApiReview.success(adminServiceImpl.findById(id));
     }
 
+    @GetMapping("findByCond")
+    @ApiOperation(value = "根据条件获取管理员", httpMethod = "GET")
+    public ApiReview findByCond() {
+        return ApiReview.success(adminServiceImpl.findByCondition((root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("id"), 1)));
+    }
 }
