@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.MappedSuperclass;
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +11,7 @@ import java.util.Date;
  */
 @MappedSuperclass
 @Data
-public abstract class BaseEntity extends BaseIdEntity implements Serializable {
+public abstract class BaseEntity extends BaseIdEntity {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     protected Date createTime;

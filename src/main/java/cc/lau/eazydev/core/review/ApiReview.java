@@ -22,20 +22,20 @@ public class ApiReview implements Serializable {
         this.msg = msg;
     }
 
-    public static ApiReview success(){
-        return new ApiReview(20000,null,"ok");
+    public static ApiReview success() {
+        return new ApiReview(20000, null, "ok");
     }
 
-    public static ApiReview success(Serializable data){
-        return new ApiReview(20000,data,"ok");
+    public static ApiReview success(Object data) {
+        return new ApiReview(20000, data, "ok");
     }
 
-    public static ApiReview fail(){
-        return new ApiReview(50000,null,"error");
+    public static ApiReview fail() {
+        return new ApiReview(50000, null, "error");
     }
 
-    public static ApiReview fail(String msg){
-        return new ApiReview(50000,null,msg);
+    public static ApiReview fail(String msg) {
+        return new ApiReview(50000, null, msg);
     }
 
 

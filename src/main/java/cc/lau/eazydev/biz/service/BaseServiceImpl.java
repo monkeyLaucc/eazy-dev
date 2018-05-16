@@ -1,6 +1,6 @@
 package cc.lau.eazydev.biz.service;
 
-import cc.lau.eazydev.biz.entity.BaseEntity;
+import cc.lau.eazydev.biz.entity.BaseIdEntity;
 import cc.lau.eazydev.biz.repository.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by cc on 18/5/15
  */
-public class BaseServiceImpl<T extends BaseEntity, ID extends Serializable> {
+public class BaseServiceImpl<T extends BaseIdEntity, ID extends Serializable> {
 
 
     @Autowired
