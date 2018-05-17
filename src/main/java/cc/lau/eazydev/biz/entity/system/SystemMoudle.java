@@ -1,6 +1,6 @@
 package cc.lau.eazydev.biz.entity.system;
 
-import cc.lau.eazydev.biz.entity.BaseIdEntity;
+import cc.lau.eazydev.biz.entity.BaseEntity;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.Entity;
  */
 @Entity
 @Data
-public class SystemMoudle extends BaseIdEntity {
+public class SystemMoudle extends BaseEntity {
 
     //父级id
     private Integer parentId;

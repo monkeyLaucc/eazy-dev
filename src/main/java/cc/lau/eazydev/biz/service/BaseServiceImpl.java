@@ -1,6 +1,6 @@
 package cc.lau.eazydev.biz.service;
 
-import cc.lau.eazydev.biz.entity.BaseIdEntity;
+import cc.lau.eazydev.biz.entity.BaseEntity;
 import cc.lau.eazydev.biz.repository.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,16 +9,21 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by cc on 18/5/15
  */
-public class BaseServiceImpl<T extends BaseIdEntity, ID extends Serializable> {
+public class BaseServiceImpl<T extends BaseEntity, ID extends Serializable> {
 
 
+    /**
+     * 实体的repository接口必须继承BaseRepository<T, ID>接口才能成功调用baseRepository的方法
+     * 否则报错： Unable to locate persister
+     */
     @Autowired
-    private BaseRepository<T, ID> baseRepository;
+    protected BaseRepository<T, ID> baseRepository;
 
     /**
      * save
@@ -27,6 +32,7 @@ public class BaseServiceImpl<T extends BaseIdEntity, ID extends Serializable> {
      * @return
      */
     public T save(T t) {
+        t.setCreateTime(new Date());
         return baseRepository.save(t);
     }
 
@@ -37,6 +43,7 @@ public class BaseServiceImpl<T extends BaseIdEntity, ID extends Serializable> {
      * @return
      */
     public T update(T t) {
+        t.setUpdateTime(new Date());
         return baseRepository.saveAndFlush(t);
     }
 
@@ -115,8 +122,6 @@ public class BaseServiceImpl<T extends BaseIdEntity, ID extends Serializable> {
     public int count() {
         return (int) baseRepository.count();
     }
-
-
     /**
      * 根据条件获取实体
      *

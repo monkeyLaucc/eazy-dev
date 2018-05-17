@@ -28,14 +28,14 @@ public class adminUserController extends BaseController {
     }
 
     @GetMapping("findById/{id}")
-    @ApiOperation(value = "添加管理员", httpMethod = "GET")
+    @ApiOperation(value = "根据id获取管理员", httpMethod = "GET")
     public ApiReview findById(@PathVariable("id") Integer id) {
         return ApiReview.success(adminServiceImpl.findById(id));
     }
 
-    @GetMapping("findByCond")
-    @ApiOperation(value = "根据条件获取管理员", httpMethod = "GET")
-    public ApiReview findByCond() {
-        return ApiReview.success(adminServiceImpl.findByCondition((root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("id"), 1)));
+    @GetMapping("findByIdWithMoudles/{id}")
+    @ApiOperation(value = "根据id获取管理员并带上模块信息", httpMethod = "GET")
+    public ApiReview findByIdWithMoudles(@PathVariable("id") Integer id) {
+        return ApiReview.success(adminServiceImpl.findByIdWithMoudles(id));
     }
 }
